@@ -1,0 +1,27 @@
+input:
+  source: local  # options: local or s3
+  local_path: f87_rag_logs.csv
+
+s3:
+  bucket: your-bucket-name
+  key: your-folder/data.csv
+  local_path: /tmp/data.csv
+
+models:
+  llm_model: gpt-4
+  embedding_model: text-embedding-ada-002
+
+runtime:
+  max_retries: 3
+  retry_delay: 5
+  scoring_strategy: llm  # options: llm, embedding
+
+prompts:
+  templates:
+    - "Summarize the following text:\n\n{text}"
+    - "Give a concise summary of this passage:\n\n{text}"
+    - "Please summarize the key points of this:\n\n{text}"
+
+mlflow:
+  tracking_uri: file:./mlruns
+  experiment_name: genai-summarization

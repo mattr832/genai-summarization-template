@@ -1,0 +1,8 @@
+boto3
+pandas
+openai>=1.0.0
+mlflow
+python-dotenv
+PyYAML
+numpy
+scipy
